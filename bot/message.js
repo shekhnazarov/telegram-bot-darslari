@@ -7,6 +7,11 @@ const {
   new_category,
   save_category,
 } = require("./helper/category");
+const {
+  get_all_filiallar,
+  new_filial,
+  save_filial,
+} = require("./helper/filial");
 
 bot.on("message", async (msg) => {
   const chatId = msg.from.id;
@@ -31,13 +36,24 @@ bot.on("message", async (msg) => {
       get_all_categories(chatId);
     }
 
+    if (text === "Filiallar") {
+      get_all_filiallar(chatId);
+    }
+
     if (user.action === "add_category") {
       new_category(msg);
     }
 
+    if (user.action === "add_filial") {
+      new_filial(msg);
+    }
+
     if (user.action.includes(`edit_category-`)) {
-      let id = user.action.split("-")[1];
       save_category(chatId, text);
+    }
+
+    if (user.action.includes(`edit_filial-`)) {
+      save_filial(chatId, text);
     }
   }
 });

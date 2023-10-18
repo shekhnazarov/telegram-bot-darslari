@@ -7,12 +7,22 @@ const adminKeyboard = [
       text: "Katalog",
     },
   ],
+  [
+    {
+      text: "Filiallar",
+    },
+  ],
 ];
 
 const userKeyboard = [
   [
     {
       text: "Katalog",
+    },
+  ],
+  [
+    {
+      text: "Filiallar",
     },
   ],
 ];
