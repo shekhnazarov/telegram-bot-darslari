@@ -1,8 +1,10 @@
 const { bot } = require("../bot");
 const User = require("../../model/user");
 const Office = require("../../model/office");
+const { clear_draft_office } = require("./office");
 
 const get_all_office = async (chatId) => {
+  clear_draft_office();
   const user = await User.findOne({ chatId }).lean();
   await User.findByIdAndUpdate(
     user._id,
@@ -10,14 +12,10 @@ const get_all_office = async (chatId) => {
     { new: true }
   );
   const offices = await Office.find().lean();
-  const list = offices.reduce((acc, curr, index) => {
-    if (index % 2 === 0) {
-      acc.push([curr.title]);
-    } else {
-      acc[acc.length - 1].push(curr.title);
-    }
-    return acc;
-  }, []);
+  const list = offices.map((office) => {
+    return [{ text: office.title }];
+  });
+  console.log(list);
   bot.sendMessage(
     chatId,
     "🚖 Sizga kerakli bo'lgan ofislardan birortasini tanlashingiz mumkin",

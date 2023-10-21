@@ -3,7 +3,8 @@ const { Schema, model } = require("mongoose");
 const Office = new Schema({
   title: String,
   img: String,
-  desc: String,
+  username: String,
+  mobile: Number,
   status: {
     type: Number,
     default: 0,
