@@ -11,11 +11,10 @@ const get_all_office = async (chatId) => {
     { ...user, action: "get_office_location" },
     { new: true }
   );
-  const offices = await Office.find().lean();
+  const offices = await Office.find({ status: 1 }).lean();
   const list = offices.map((office) => {
     return [{ text: office.title }];
   });
-  console.log(list);
   bot.sendMessage(
     chatId,
     "🚖 Sizga kerakli bo'lgan ofislardan birortasini tanlashingiz mumkin",

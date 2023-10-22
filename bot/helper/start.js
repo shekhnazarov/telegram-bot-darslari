@@ -79,6 +79,27 @@ const start = async (msg) => {
   }
 };
 
+const get_pay_bot = async (chatId) => {
+  bot.sendPhoto(
+    chatId,
+    "https://avatars.mds.yandex.net/get-altay/5649895/2a0000017eac0810430800025e1174425321/orig",
+    {
+      caption: `🚖 Sultan taxi - Yandex taxi Rasmiy hamkori\n\n@multidriver_sultantaxibot\n\n💵 Bu bot orqali siz Yandex Pro balansingizni to'ldirganda +25% keshbek va Ynadex Pro balansdagi pullaringizni yechishingiz mumkin bo'ladi !\n\n🚕 Sultan taxi Hammasi tez va oson!`,
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "📥 Pozivnoydan pul yechish",
+              url: "https://t.me/multidriver_sultantaxibot",
+            },
+          ],
+        ],
+      },
+    }
+  );
+};
+
 module.exports = {
   start,
+  get_pay_bot,
 };
